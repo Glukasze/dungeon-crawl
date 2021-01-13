@@ -51,21 +51,31 @@ public class Main extends Application {
     }
 
     private void onKeyPressed(KeyEvent keyEvent) {
+        int currentX = map.getPlayer().getX();
+        int currentY = map.getPlayer().getY();
         switch (keyEvent.getCode()) {
             case UP:
-                map.getPlayer().move(0, -1);
+                if (!map.getCell(currentX, currentY - 1).getTileName().equals("wall") & map.getCell(currentX, currentY - 1).getActor() == null) {
+                    map.getPlayer().move(0, -1);
+                }
                 refresh();
                 break;
             case DOWN:
-                map.getPlayer().move(0, 1);
+                if (!map.getCell(currentX, currentY + 1).getTileName().equals("wall") & map.getCell(currentX, currentY + 1).getActor() == null) {
+                    map.getPlayer().move(0, 1);
+                }
                 refresh();
                 break;
             case LEFT:
-                map.getPlayer().move(-1, 0);
+                if (!map.getCell(currentX - 1, currentY).getTileName().equals("wall") && map.getCell(currentX - 1, currentY).getActor() == null) {
+                    map.getPlayer().move(-1, 0);
+                }
                 refresh();
                 break;
             case RIGHT:
-                map.getPlayer().move(1,0);
+                if (!map.getCell(currentX + 1, currentY).getTileName().equals("wall") && map.getCell(currentX + 1, currentY).getActor() == null) {
+                    map.getPlayer().move(1, 0);
+                }
                 refresh();
                 break;
         }
