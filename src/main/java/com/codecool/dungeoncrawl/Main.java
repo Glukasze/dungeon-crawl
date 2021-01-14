@@ -63,28 +63,16 @@ public class Main extends Application {
 
         switch (keyEvent.getCode()) {
             case UP:
-                if (!map.getCell(currentX, currentY - 1).getTileName().equals("wall") & map.getCell(currentX, currentY - 1).getActor() == null) {
-                    map.getPlayer().move(0, -1);
-                }
-                refresh();
+                move(generateDirection("up"));
                 break;
             case DOWN:
-                if (!map.getCell(currentX, currentY + 1).getTileName().equals("wall") & map.getCell(currentX, currentY + 1).getActor() == null) {
-                    map.getPlayer().move(0, 1);
-                }
-                refresh();
+                move(generateDirection("down"));
                 break;
             case LEFT:
-                if (!map.getCell(currentX - 1, currentY).getTileName().equals("wall") && map.getCell(currentX - 1, currentY).getActor() == null) {
-                    map.getPlayer().move(-1, 0);
-                }
-                refresh();
+                move(generateDirection("left"));
                 break;
             case RIGHT:
-                if (!map.getCell(currentX + 1, currentY).getTileName().equals("wall") && map.getCell(currentX + 1, currentY).getActor() == null) {
-                    map.getPlayer().move(1, 0);
-                }
-                refresh();
+                move(generateDirection("right"));
                 break;
             case X:
                 if (map.getCell(currentX, currentY).getItem() != null) {
@@ -116,4 +104,35 @@ public class Main extends Application {
         healthLabel.setText("" + map.getPlayer().getHealth());
         inventoryLabel.setText(map.getPlayer().getInventoryAsString());
     }
+
+    private void move(int[] direction) {
+        if (!map.getCell(currentX + direction[0], currentY + direction[1]).getTileName().equals("wall") & map.getCell(currentX + direction[0], currentY + direction[1]).getActor() == null) {
+            map.getPlayer().move(direction[0], direction[1]);
+        } else if (map.getCell(currentX + direction[0], currentY + direction[1]).getActor() != null) {
+            map.getCell(currentX + direction[0],currentY + direction[1]).getActor().subtractHealth(5);
+            if (map.getCell(currentX + direction[0],currentY + direction[1]).getActor().getHealth() <= 0) {
+                map.getCell(currentX + direction[0],currentY + direction[1]).setActor(null);
+            }
+        }
+        refresh();
+    }
+
+    private int[] generateDirection(String directionName) {
+        int[] result = new int[0];
+        switch (directionName) {
+            case "up":
+                result = new int[]{0, -1};
+                break;
+            case "down":
+                result = new int[]{0, 1};
+                break;
+            case "left":
+                result = new int[]{-1, 0};
+                break;
+            case "right":
+                result = new int[]{1, 0};
+                break;
+            }
+            return result;
+        }
 }
