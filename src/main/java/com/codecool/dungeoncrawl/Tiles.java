@@ -28,6 +28,7 @@ public class Tiles {
         tileMap.put("floor", new Tile(2, 0));
         tileMap.put("player", new Tile(25, 0));
         tileMap.put("skeleton", new Tile(29, 6));
+        tileMap.put("troll", new Tile(29, 2));
         tileMap.put("sword", new Tile(1, 29));
         tileMap.put("key", new Tile(16, 23));
     }

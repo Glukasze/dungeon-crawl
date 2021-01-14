@@ -6,6 +6,7 @@ com/codecool/dungeoncrawl/logic/items/Key.class
 com/codecool/dungeoncrawl/logic/actors/Skeleton.class
 com/codecool/dungeoncrawl/logic/actors/Actor.class
 com/codecool/dungeoncrawl/logic/items/Sword.class
+com/codecool/dungeoncrawl/logic/actors/Troll.class
 com/codecool/dungeoncrawl/logic/CellType.class
 com/codecool/dungeoncrawl/Main$1.class
 com/codecool/dungeoncrawl/logic/Drawable.class

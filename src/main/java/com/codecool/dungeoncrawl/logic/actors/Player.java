@@ -15,10 +15,16 @@ public class Player extends Actor {
 
     public void addToInventory(Item item) {
         this.inventory.add(item);
+        if (item.getItemType().equals("weapon")) {
+            this.increaseDamage(item.getDamage());
+        }
     }
 
     public void removeFromInventory(Item item) {
         this.inventory.remove(item);
+        if (item.getItemType().equals("weapon")) {
+            this.decreaseDamage(item.getDamage());
+        }
     }
 
     public ArrayList<Item> getInventory() {

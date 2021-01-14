@@ -103,15 +103,20 @@ public class Main extends Application {
         }
         healthLabel.setText("" + map.getPlayer().getHealth());
         inventoryLabel.setText(map.getPlayer().getInventoryAsString());
+        if (map.getPlayer().getHealth() <= 0) {
+            map.setPlayer(null);
+        }
     }
 
     private void move(int[] direction) {
         if (!map.getCell(currentX + direction[0], currentY + direction[1]).getTileName().equals("wall") & map.getCell(currentX + direction[0], currentY + direction[1]).getActor() == null) {
             map.getPlayer().move(direction[0], direction[1]);
         } else if (map.getCell(currentX + direction[0], currentY + direction[1]).getActor() != null) {
-            map.getCell(currentX + direction[0],currentY + direction[1]).getActor().subtractHealth(5);
+            map.getCell(currentX + direction[0],currentY + direction[1]).getActor().subtractHealth(map.getPlayer().getDamage());
             if (map.getCell(currentX + direction[0],currentY + direction[1]).getActor().getHealth() <= 0) {
                 map.getCell(currentX + direction[0],currentY + direction[1]).setActor(null);
+            } else {
+                map.getPlayer().subtractHealth(2);
             }
         }
         refresh();
