@@ -8,6 +8,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -16,12 +17,14 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+
     GameMap map = MapLoader.loadMap();
     Canvas canvas = new Canvas(
             map.getWidth() * Tiles.TILE_WIDTH,
             map.getHeight() * Tiles.TILE_WIDTH);
     GraphicsContext context = canvas.getGraphicsContext2D();
     Label healthLabel = new Label();
+    Button pickUp = new Button("Pick up");
 
     public static void main(String[] args) {
         launch(args);
@@ -45,14 +48,15 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         refresh();
         scene.setOnKeyPressed(this::onKeyPressed);
-
         primaryStage.setTitle("Dungeon Crawl");
         primaryStage.show();
     }
 
     private void onKeyPressed(KeyEvent keyEvent) {
+
         int currentX = map.getPlayer().getX();
         int currentY = map.getPlayer().getY();
+
         switch (keyEvent.getCode()) {
             case UP:
                 if (!map.getCell(currentX, currentY - 1).getTileName().equals("wall") & map.getCell(currentX, currentY - 1).getActor() == null) {
@@ -78,8 +82,13 @@ public class Main extends Application {
                 }
                 refresh();
                 break;
+            case X:
+                if (map.getCell(currentX, currentY).getItem() != null) {
+                    map.getCell(currentX, currentY).setItem(null);
+                }
         }
     }
+
 
     private void refresh() {
         context.setFill(Color.BLACK);

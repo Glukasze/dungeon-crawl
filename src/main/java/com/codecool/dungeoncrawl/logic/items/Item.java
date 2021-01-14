@@ -11,6 +11,9 @@ public abstract class Item implements Drawable {
         this.cell.setItem(this);
     }
 
+    public String getTileClass() {
+        return "item";
+    }
 
     public Cell getCell() {
         return cell;
@@ -22,6 +25,10 @@ public abstract class Item implements Drawable {
 
     public int getY() {
         return cell.getY();
+    }
+
+    public void pickUp() {
+        cell.setItem(null);
     }
 
 }
