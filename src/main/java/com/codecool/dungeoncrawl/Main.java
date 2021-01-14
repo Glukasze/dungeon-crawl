@@ -24,7 +24,10 @@ public class Main extends Application {
             map.getHeight() * Tiles.TILE_WIDTH);
     GraphicsContext context = canvas.getGraphicsContext2D();
     Label healthLabel = new Label();
-    Button pickUp = new Button("Pick up");
+    Label inventoryLabel = new Label();
+
+    int currentX = map.getPlayer().getX();
+    int currentY = map.getPlayer().getY();
 
     public static void main(String[] args) {
         launch(args);
@@ -38,6 +41,8 @@ public class Main extends Application {
 
         ui.add(new Label("Health: "), 0, 0);
         ui.add(healthLabel, 1, 0);
+        ui.add(new Label("Inventory:"), 0,1);
+        ui.add(inventoryLabel, 0,2);
 
         BorderPane borderPane = new BorderPane();
 
@@ -54,8 +59,7 @@ public class Main extends Application {
 
     private void onKeyPressed(KeyEvent keyEvent) {
 
-        int currentX = map.getPlayer().getX();
-        int currentY = map.getPlayer().getY();
+
 
         switch (keyEvent.getCode()) {
             case UP:
@@ -84,13 +88,17 @@ public class Main extends Application {
                 break;
             case X:
                 if (map.getCell(currentX, currentY).getItem() != null) {
+                    map.getPlayer().addToInventory(map.getCell(currentX,currentY).getItem());
                     map.getCell(currentX, currentY).setItem(null);
                 }
+                refresh();
         }
     }
 
 
     private void refresh() {
+        this.currentX = map.getPlayer().getX();
+        this.currentY = map.getPlayer().getY();
         context.setFill(Color.BLACK);
         context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         for (int x = 0; x < map.getWidth(); x++) {
@@ -106,5 +114,6 @@ public class Main extends Application {
             }
         }
         healthLabel.setText("" + map.getPlayer().getHealth());
+        inventoryLabel.setText(map.getPlayer().getInventoryAsString());
     }
 }
