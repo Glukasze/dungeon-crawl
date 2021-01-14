@@ -5,12 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b934686-0015-4b0f-8645-dc8fc6a1e972" name="Default Changelist" comment="Implementing movement restriction&#10;-player cannot move into walls&#10;-player cannot move into monsters">
-      <change beforePath="$PROJECT_DIR$/dungeon-crawl.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dungeon-crawl.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/items/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/items/Key.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/items/Sword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/Tiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/Tiles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/GameMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/GameMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/MapLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/MapLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/map.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Tiles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Tiles.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/Cell.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/Cell.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/GameMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/GameMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/MapLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/MapLoader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/map.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/null/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/null/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/null/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/null/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -19,6 +44,14 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1mzANi1Cy6I4hAPe9dFzYNKuCX5" />
   <component name="ProjectViewState">
@@ -32,6 +65,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="inlay.hints.JAVA" />
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
@@ -107,7 +141,7 @@
       <option name="presentableId" value="Default" />
       <updated>1610486007840</updated>
       <workItem from="1610486009811" duration="2758000" />
-      <workItem from="1610561439689" duration="6571000" />
+      <workItem from="1610561439689" duration="14499000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1610486338764</created>
@@ -137,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610567650709</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fixing git">
+      <created>1610568486942</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1610568486942</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +199,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first" />
     <MESSAGE value="Implementing movement restriction&#10;-player cannot move into walls&#10;-player cannot move into monsters" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementing movement restriction&#10;-player cannot move into walls&#10;-player cannot move into monsters" />
+    <MESSAGE value="fixing git" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing git" />
   </component>
 </project>
