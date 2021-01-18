@@ -1,8 +1,10 @@
 package com.codecool.dungeoncrawl;
 
 import com.codecool.dungeoncrawl.logic.Cell;
+import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
+import com.codecool.dungeoncrawl.logic.items.Key;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -108,8 +110,23 @@ public class Main extends Application {
         }
     }
 
+    private boolean doorCheck(int[] direction) {
+        if (map.getCell(currentX + direction[0], currentY + direction[1]).getTileName().equals("closed")) {
+
+            if (map.getPlayer().inventoryContainsItem("key")) {
+                map.getCell(currentX + direction[0], currentY + direction[1]).setType(CellType.OPEN);
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private void move(int[] direction) {
-        if (!map.getCell(currentX + direction[0], currentY + direction[1]).getTileName().equals("wall") & map.getCell(currentX + direction[0], currentY + direction[1]).getActor() == null) {
+
+        if (!map.getCell(currentX + direction[0], currentY + direction[1]).getTileName().equals("wall") &&
+                map.getCell(currentX + direction[0], currentY + direction[1]).getActor() == null &&
+                doorCheck(direction)) {
             map.getPlayer().move(direction[0], direction[1]);
         } else if (map.getCell(currentX + direction[0], currentY + direction[1]).getActor() != null) {
             map.getCell(currentX + direction[0],currentY + direction[1]).getActor().subtractHealth(map.getPlayer().getDamage());

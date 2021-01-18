@@ -39,6 +39,14 @@ public class Player extends Actor {
         return result;
     }
 
+    public boolean inventoryContainsItem(String itemType) {
+        for (Item item:inventory) {
+            if (item.getItemType().equals(itemType)) {
+                return true;
+            }
+        } return false;
+    }
+
     public String getTileName() {
         return "player";
     }
