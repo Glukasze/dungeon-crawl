@@ -4,19 +4,22 @@ import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
-import com.codecool.dungeoncrawl.logic.items.Key;
+import com.codecool.dungeoncrawl.logic.actors.Actor;
+import com.codecool.dungeoncrawl.logic.actors.Bug;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import java.util.List;
+import java.util.Random;
 
 public class Main extends Application {
 
@@ -30,6 +33,7 @@ public class Main extends Application {
 
     int currentX = map.getPlayer().getX();
     int currentY = map.getPlayer().getY();
+    Bug bug = map.getBug();
 
     public static void main(String[] args) {
         launch(args);
@@ -65,16 +69,16 @@ public class Main extends Application {
 
         switch (keyEvent.getCode()) {
             case UP:
-                move(generateDirection("up"));
+                playerMove(generateDirection("up"));
                 break;
             case DOWN:
-                move(generateDirection("down"));
+                playerMove(generateDirection("down"));
                 break;
             case LEFT:
-                move(generateDirection("left"));
+                playerMove(generateDirection("left"));
                 break;
             case RIGHT:
-                move(generateDirection("right"));
+                playerMove(generateDirection("right"));
                 break;
             case X:
                 if (map.getCell(currentX, currentY).getItem() != null) {
@@ -89,6 +93,8 @@ public class Main extends Application {
     private void refresh() {
         this.currentX = map.getPlayer().getX();
         this.currentY = map.getPlayer().getY();
+
+        bugMove(generateDirection(randomDirection()), bug);
         context.setFill(Color.BLACK);
         context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         for (int x = 0; x < map.getWidth(); x++) {
@@ -122,7 +128,7 @@ public class Main extends Application {
         return true;
     }
 
-    private void move(int[] direction) {
+    private void playerMove(int[] direction) {
 
         if (!map.getCell(currentX + direction[0], currentY + direction[1]).getTileName().equals("wall") &&
                 map.getCell(currentX + direction[0], currentY + direction[1]).getActor() == null &&
@@ -137,6 +143,21 @@ public class Main extends Application {
             }
         }
         refresh();
+    }
+
+    private void bugMove(int[] direction, Bug bug) {
+        boolean moving = true;
+        while (moving) {
+            if (!map.getCell(bug.getX() + direction[0], bug.getY() + direction[1]).getTileName().equals("wall") &&
+                    map.getCell(bug.getX() + direction[0], bug.getY() + direction[1]).getActor() == null &&
+                    map.getCell(bug.getX() + direction[0], bug.getY() + direction[1]) != map.getCell(currentX, currentY)) {
+                map.getBug().move(direction[0], direction[1]);
+                moving = false;
+            } else if (map.getCell(bug.getX() + direction[0], bug.getY() + direction[1]) == map.getCell(currentX, currentY)) {
+                map.getPlayer().subtractHealth(bug.getDamage());
+                moving = false;
+            }
+        }
     }
 
     private int[] generateDirection(String directionName) {
@@ -157,4 +178,21 @@ public class Main extends Application {
             }
             return result;
         }
+
+    private String randomDirection() {
+        Random rand = new Random();
+        int selection = rand.nextInt(4);
+
+        switch (selection) {
+            case 0:
+                return "up";
+            case 1:
+                return "down";
+            case 2:
+                return "left";
+            case 3:
+                return "right";
+        }
+        return "up";
+    }
 }

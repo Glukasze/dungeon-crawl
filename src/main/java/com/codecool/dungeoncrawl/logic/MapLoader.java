@@ -1,5 +1,6 @@
 package com.codecool.dungeoncrawl.logic;
 
+import com.codecool.dungeoncrawl.logic.actors.Bug;
 import com.codecool.dungeoncrawl.logic.actors.Player;
 import com.codecool.dungeoncrawl.logic.actors.Skeleton;
 import com.codecool.dungeoncrawl.logic.actors.Troll;
@@ -41,6 +42,10 @@ public class MapLoader {
                         case 't':
                             cell.setType(CellType.FLOOR);
                             new Troll(cell);
+                            break;
+                        case 'b':
+                            cell.setType(CellType.FLOOR);
+                            new Bug(cell);
                             break;
                         case '@':
                             cell.setType(CellType.FLOOR);
