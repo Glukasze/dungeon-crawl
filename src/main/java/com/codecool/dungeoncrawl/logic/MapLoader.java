@@ -54,6 +54,12 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             map.setKey(new Key(cell));
                             break;
+                        case 'c':
+                            cell.setType(CellType.CLOSED);
+                            break;
+                        case 'o':
+                            cell.setType(CellType.OPEN);
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }
