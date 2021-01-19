@@ -32,6 +32,9 @@ public class MapLoader {
                         case '#':
                             cell.setType(CellType.WALL);
                             break;
+                        case 'w':
+                            cell.setType(CellType.WATER);
+                            break;
                         case '.':
                             cell.setType(CellType.FLOOR);
                             break;
