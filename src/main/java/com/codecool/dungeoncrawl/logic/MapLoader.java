@@ -45,7 +45,7 @@ public class MapLoader {
                             break;
                         case 'b':
                             cell.setType(CellType.FLOOR);
-                            new Bug(cell);
+                            map.setBug(new Bug(cell));
                             break;
                         case '@':
                             cell.setType(CellType.FLOOR);

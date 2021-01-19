@@ -18,6 +18,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -33,7 +34,7 @@ public class Main extends Application {
 
     int currentX = map.getPlayer().getX();
     int currentY = map.getPlayer().getY();
-    Bug bug = map.getBug();
+
 
     public static void main(String[] args) {
         launch(args);
@@ -94,7 +95,7 @@ public class Main extends Application {
         this.currentX = map.getPlayer().getX();
         this.currentY = map.getPlayer().getY();
 
-        bugMove(generateDirection(randomDirection()), bug);
+        bugMove(generateDirection(randomDirection()), map.getBugs());
         context.setFill(Color.BLACK);
         context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         for (int x = 0; x < map.getWidth(); x++) {
@@ -145,17 +146,21 @@ public class Main extends Application {
         refresh();
     }
 
-    private void bugMove(int[] direction, Bug bug) {
-        boolean moving = true;
-        while (moving) {
-            if (!map.getCell(bug.getX() + direction[0], bug.getY() + direction[1]).getTileName().equals("wall") &&
-                    map.getCell(bug.getX() + direction[0], bug.getY() + direction[1]).getActor() == null &&
-                    map.getCell(bug.getX() + direction[0], bug.getY() + direction[1]) != map.getCell(currentX, currentY)) {
-                map.getBug().move(direction[0], direction[1]);
-                moving = false;
-            } else if (map.getCell(bug.getX() + direction[0], bug.getY() + direction[1]) == map.getCell(currentX, currentY)) {
-                map.getPlayer().subtractHealth(bug.getDamage());
-                moving = false;
+    private void bugMove(int[] direction, ArrayList<Bug> bugs) {
+        int moves = 0;
+        while (moves < 1) {
+            for (Bug bug:bugs) {
+                if (!map.getCell(bug.getX() + direction[0], bug.getY() + direction[1]).getTileName().equals("wall") &&
+                        map.getCell(bug.getX() + direction[0], bug.getY() + direction[1]).getActor() == null &&
+                        map.getCell(bug.getX() + direction[0], bug.getY() + direction[1]) != map.getCell(currentX, currentY)) {
+                    bug.move(direction[0], direction[1]);
+                    moves += 1;
+                } else if (map.getCell(bug.getX() + direction[0], bug.getY() + direction[1]) == map.getCell(currentX, currentY)) {
+                    map.getPlayer().subtractHealth(bug.getDamage());
+                    moves += 1;
+                } else {
+                    direction = generateDirection(randomDirection());
+                }
             }
         }
     }
