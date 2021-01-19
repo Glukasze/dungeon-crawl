@@ -11,8 +11,8 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class MapLoader {
-    public static GameMap loadMap() {
-        InputStream is = MapLoader.class.getResourceAsStream("/1.txt");
+    public static GameMap loadMap(String path) {
+        InputStream is = MapLoader.class.getResourceAsStream(path);
         Scanner scanner = new Scanner(is);
         int width = scanner.nextInt();
         int height = scanner.nextInt();
