@@ -4,6 +4,7 @@ com/codecool/dungeoncrawl/logic/items/Item.class
 com/codecool/dungeoncrawl/Main.class
 com/codecool/dungeoncrawl/logic/items/Key.class
 com/codecool/dungeoncrawl/logic/actors/Skeleton.class
+com/codecool/dungeoncrawl/logic/actors/Bug.class
 com/codecool/dungeoncrawl/logic/actors/Actor.class
 com/codecool/dungeoncrawl/logic/items/Sword.class
 com/codecool/dungeoncrawl/logic/actors/Troll.class

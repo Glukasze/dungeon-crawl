@@ -4,6 +4,7 @@
 /Users/gracjan/Desktop/Code/Projects/JAVA/dungeon-crawl/src/main/java/com/codecool/dungeoncrawl/logic/GameMap.java
 /Users/gracjan/Desktop/Code/Projects/JAVA/dungeon-crawl/src/main/java/com/codecool/dungeoncrawl/Tiles.java
 /Users/gracjan/Desktop/Code/Projects/JAVA/dungeon-crawl/src/main/java/com/codecool/dungeoncrawl/logic/actors/Actor.java
+/Users/gracjan/Desktop/Code/Projects/JAVA/dungeon-crawl/src/main/java/com/codecool/dungeoncrawl/logic/actors/Bug.java
 /Users/gracjan/Desktop/Code/Projects/JAVA/dungeon-crawl/src/main/java/com/codecool/dungeoncrawl/logic/MapLoader.java
 /Users/gracjan/Desktop/Code/Projects/JAVA/dungeon-crawl/src/main/java/com/codecool/dungeoncrawl/logic/actors/Skeleton.java
 /Users/gracjan/Desktop/Code/Projects/JAVA/dungeon-crawl/src/main/java/com/codecool/dungeoncrawl/logic/Cell.java
