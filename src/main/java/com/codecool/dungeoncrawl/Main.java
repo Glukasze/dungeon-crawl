@@ -135,6 +135,9 @@ public class Main extends Application {
                 map.getCell(currentX + direction[0], currentY + direction[1]).getActor() == null &&
                 doorCheck(direction)) {
             map.getPlayer().move(direction[0], direction[1]);
+            if (map.getCell(currentX + direction[0], currentY + direction[1]).getTileName().equals("entrance")) {
+
+            }
         } else if (map.getCell(currentX + direction[0], currentY + direction[1]).getActor() != null) {
             map.getCell(currentX + direction[0],currentY + direction[1]).getActor().subtractHealth(map.getPlayer().getDamage());
             if (map.getCell(currentX + direction[0],currentY + direction[1]).getActor().getHealth() <= 0) {
