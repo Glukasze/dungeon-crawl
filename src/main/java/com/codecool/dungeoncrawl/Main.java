@@ -66,8 +66,6 @@ public class Main extends Application {
 
     private void onKeyPressed(KeyEvent keyEvent) {
 
-
-
         switch (keyEvent.getCode()) {
             case UP:
                 playerMove(generateDirection("up"));
@@ -119,7 +117,6 @@ public class Main extends Application {
 
     private boolean doorCheck(int[] direction) {
         if (map.getCell(currentX + direction[0], currentY + direction[1]).getTileName().equals("closed")) {
-
             if (map.getPlayer().inventoryContainsItem("key")) {
                 map.getCell(currentX + direction[0], currentY + direction[1]).setType(CellType.OPEN);
             } else {
