@@ -2,6 +2,7 @@ package com.codecool.dungeoncrawl;
 
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
+import com.codecool.dungeoncrawl.logic.Database.DbConnector;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
 import com.codecool.dungeoncrawl.logic.actors.Actor;
@@ -75,6 +76,7 @@ public class Main extends Application {
 
         switch (keyEvent.getCode()) {
             case UP:
+                DbConnector.connect();
                 playerMove(generateDirection("up"));
                 break;
             case DOWN:
