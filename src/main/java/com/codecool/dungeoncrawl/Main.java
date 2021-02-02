@@ -6,6 +6,9 @@ import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
 import com.codecool.dungeoncrawl.logic.actors.Actor;
 import com.codecool.dungeoncrawl.logic.actors.Bug;
+import com.codecool.dungeoncrawl.logic.actors.Player;
+import com.codecool.dungeoncrawl.logic.items.Key;
+import com.codecool.dungeoncrawl.logic.items.Sword;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -34,6 +37,10 @@ public class Main extends Application {
 
     int currentX = map.getPlayer().getX();
     int currentY = map.getPlayer().getY();
+    private Player player;
+
+    public Main() {
+    }
 
 
     public static void main(String[] args) {
@@ -133,7 +140,11 @@ public class Main extends Application {
                 doorCheck(direction)) {
             map.getPlayer().move(direction[0], direction[1]);
             if (map.getCell(currentX + direction[0], currentY + direction[1]).getTileName().equals("entrance")) {
+                this.player = map.getPlayer();
                 map = MapLoader.loadMap("/2.txt");
+                map.getPlayer().setInventory(this.player.getInventory());
+                map.getPlayer().updateDamage();
+                map.getPlayer().setHealth(player.getHealth());
             }
         } else if (map.getCell(currentX + direction[0], currentY + direction[1]).getActor() != null) {
             map.getCell(currentX + direction[0],currentY + direction[1]).getActor().subtractHealth(map.getPlayer().getDamage());

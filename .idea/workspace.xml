@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b934686-0015-4b0f-8645-dc8fc6a1e972" name="Default Changelist" comment="Implementing visuals&#10;&#10;-some tiles visually changed">
+    <list default="true" id="5b934686-0015-4b0f-8645-dc8fc6a1e972" name="Default Changelist" comment="minor changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/actors/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/actors/Actor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/actors/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/actors/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/map.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +79,7 @@
       <command value="mvn --debug" />
     </option>
   </component>
-  <component name="RunManager" selected="Maven.dungeon-crawl-Maven-run">
+  <component name="RunManager" selected="JUnit.ActorTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.codecool.dungeoncrawl.Main" />
       <module name="dungeon-crawl" />
@@ -109,6 +112,21 @@
       <module name="dungeon-crawl" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CellTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dungeon-crawl" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.codecool.dungeoncrawl.logic.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.codecool.dungeoncrawl.logic" />
+      <option name="MAIN_CLASS_NAME" value="com.codecool.dungeoncrawl.logic.CellTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -165,15 +183,16 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.ActorTest" />
       <item itemvalue="JUnit.All in dungeon-crawl" />
+      <item itemvalue="JUnit.CellTest" />
       <item itemvalue="Maven.dungeon-crawl-Maven-run" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in dungeon-crawl" />
         <item itemvalue="JUnit.ActorTest" />
+        <item itemvalue="JUnit.CellTest" />
+        <item itemvalue="JUnit.All in dungeon-crawl" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.All in dungeon-crawl" />
-        <item itemvalue="JUnit.ActorTest" />
       </list>
     </recent_temporary>
   </component>
@@ -189,7 +208,11 @@
       <workItem from="1610561439689" duration="14499000" />
       <workItem from="1610705148878" duration="4672000" />
       <workItem from="1611078930659" duration="859000" />
-      <workItem from="1611163189983" duration="3072000" />
+      <workItem from="1611163189983" duration="3117000" />
+      <workItem from="1611389904848" duration="13000" />
+      <workItem from="1611394401478" duration="3908000" />
+      <workItem from="1612005649902" duration="150000" />
+      <workItem from="1612186678123" duration="2944000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1610486338764</created>
@@ -261,7 +284,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611078875456</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="minor changes">
+      <created>1611389865900</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1611389865900</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,6 +319,7 @@
     <MESSAGE value="Implementing moving monsters&#10;&#10;-created Actor bug which will be a moving monster&#10;-moving not working yet" />
     <MESSAGE value="Implementing visuals&#10;&#10;-some tile visually changed" />
     <MESSAGE value="Implementing visuals&#10;&#10;-some tiles visually changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementing visuals&#10;&#10;-some tiles visually changed" />
+    <MESSAGE value="minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor changes" />
   </component>
 </project>

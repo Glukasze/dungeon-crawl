@@ -20,6 +20,10 @@ public abstract class Actor implements Drawable {
         cell = nextCell;
     }
 
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
     public int getHealth() {
         return health;
     }
@@ -30,6 +34,10 @@ public abstract class Actor implements Drawable {
 
     public void subtractHealth(int damage) {
         this.health -= damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
     }
 
     public int getDamage() {
