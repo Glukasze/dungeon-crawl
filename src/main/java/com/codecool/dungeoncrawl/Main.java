@@ -6,6 +6,9 @@ import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
 import com.codecool.dungeoncrawl.logic.actors.Actor;
 import com.codecool.dungeoncrawl.logic.actors.Bug;
+import com.codecool.dungeoncrawl.logic.actors.Player;
+import com.codecool.dungeoncrawl.logic.items.Key;
+import com.codecool.dungeoncrawl.logic.items.Sword;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -24,7 +27,7 @@ import java.util.Random;
 
 public class Main extends Application {
 
-    GameMap map = MapLoader.loadMap();
+    GameMap map = MapLoader.loadMap("/1.txt");
     Canvas canvas = new Canvas(
             map.getWidth() * Tiles.TILE_WIDTH,
             map.getHeight() * Tiles.TILE_WIDTH);
@@ -34,6 +37,10 @@ public class Main extends Application {
 
     int currentX = map.getPlayer().getX();
     int currentY = map.getPlayer().getY();
+    private Player player;
+
+    public Main() {
+    }
 
 
     public static void main(String[] args) {
@@ -65,8 +72,6 @@ public class Main extends Application {
     }
 
     private void onKeyPressed(KeyEvent keyEvent) {
-
-
 
         switch (keyEvent.getCode()) {
             case UP:
@@ -119,7 +124,6 @@ public class Main extends Application {
 
     private boolean doorCheck(int[] direction) {
         if (map.getCell(currentX + direction[0], currentY + direction[1]).getTileName().equals("closed")) {
-
             if (map.getPlayer().inventoryContainsItem("key")) {
                 map.getCell(currentX + direction[0], currentY + direction[1]).setType(CellType.OPEN);
             } else {
@@ -135,6 +139,13 @@ public class Main extends Application {
                 map.getCell(currentX + direction[0], currentY + direction[1]).getActor() == null &&
                 doorCheck(direction)) {
             map.getPlayer().move(direction[0], direction[1]);
+            if (map.getCell(currentX + direction[0], currentY + direction[1]).getTileName().equals("entrance")) {
+                this.player = map.getPlayer();
+                map = MapLoader.loadMap("/2.txt");
+                map.getPlayer().setInventory(this.player.getInventory());
+                map.getPlayer().updateDamage();
+                map.getPlayer().setHealth(player.getHealth());
+            }
         } else if (map.getCell(currentX + direction[0], currentY + direction[1]).getActor() != null) {
             map.getCell(currentX + direction[0],currentY + direction[1]).getActor().subtractHealth(map.getPlayer().getDamage());
             if (map.getCell(currentX + direction[0],currentY + direction[1]).getActor().getHealth() <= 0) {

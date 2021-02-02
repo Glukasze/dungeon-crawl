@@ -13,6 +13,19 @@ public class Player extends Actor {
         super(cell);
     }
 
+    public void setInventory(ArrayList<Item> inventory) {
+        this.inventory = inventory;
+    }
+
+    public void updateDamage() {
+        this.setDamage(5);
+        for (Item item : inventory) {
+            if (item.getItemType().equals("weapon")) {
+                this.increaseDamage(item.getDamage());
+            }
+        }
+    }
+
     public void addToInventory(Item item) {
         this.inventory.add(item);
         if (item.getItemType().equals("weapon")) {
