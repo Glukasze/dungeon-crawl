@@ -1,4 +1,5 @@
 com/codecool/dungeoncrawl/Tiles.class
+com/codecool/dungeoncrawl/logic/Database/DbExecutor.class
 com/codecool/dungeoncrawl/logic/actors/Player.class
 com/codecool/dungeoncrawl/logic/items/Item.class
 com/codecool/dungeoncrawl/Main.class

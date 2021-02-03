@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b934686-0015-4b0f-8645-dc8fc6a1e972" name="Default Changelist" comment="Implementing DB connection via JDBC&#10;&#10;-connection is established">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/Database/DbConnector.java" afterDir="false" />
+    <list default="true" id="5b934686-0015-4b0f-8645-dc8fc6a1e972" name="Default Changelist" comment="Implementing DB connection via JDBC&#10;&#10;-connection to the localhost Postgres DB is established">
+      <change afterPath="$PROJECT_DIR$/sample_data/sample_schema_ddl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/Database/DbExecutor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dungeon-crawl.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dungeon-crawl.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/Database/DbConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/Database/DbConnector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/actors/Actor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/actors/Actor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/actors/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/actors/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/null/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/null/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/null/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/null/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,13 +96,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -228,6 +229,7 @@
       <workItem from="1611394401478" duration="3908000" />
       <workItem from="1612005649902" duration="150000" />
       <workItem from="1612186678123" duration="2944000" />
+      <workItem from="1612379015771" duration="958000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1610486338764</created>
@@ -306,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611389865900</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Implementing DB connection via JDBC&#10;&#10;-connection to the localhost Postgres DB is established">
+      <created>1612292901359</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1612292901360</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,6 +345,7 @@
     <MESSAGE value="Implementing visuals&#10;&#10;-some tiles visually changed" />
     <MESSAGE value="minor changes" />
     <MESSAGE value="Implementing DB connection via JDBC&#10;&#10;-connection is established" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementing DB connection via JDBC&#10;&#10;-connection is established" />
+    <MESSAGE value="Implementing DB connection via JDBC&#10;&#10;-connection to the localhost Postgres DB is established" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementing DB connection via JDBC&#10;&#10;-connection to the localhost Postgres DB is established" />
   </component>
 </project>

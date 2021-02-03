@@ -1,8 +1,6 @@
 package com.codecool.dungeoncrawl.logic.Database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DbConnector {
 
@@ -18,7 +16,6 @@ public class DbConnector {
         try {
             conn = DriverManager.getConnection(URL, username, password);
             System.out.println("DB active!");
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
