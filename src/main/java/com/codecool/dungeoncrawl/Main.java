@@ -1,7 +1,6 @@
 package com.codecool.dungeoncrawl;
 
 import com.codecool.dungeoncrawl.logic.*;
-import com.codecool.dungeoncrawl.logic.Database.DbExecutor;
 import com.codecool.dungeoncrawl.logic.actors.Bug;
 import com.codecool.dungeoncrawl.logic.actors.Player;
 import javafx.application.Application;
@@ -72,6 +71,33 @@ public class Main extends Application {
     }
 
     private void saveGame() {
+
+        GameSave save = new GameSave(player.getName(), 1, player.getHealth(), player.getInventoryAsStringList(),
+                "1", player.getX(), player.getY());
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Saving");
+        alert.setHeaderText(null);
+        alert.setContentText("press OK to save");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            try {
+                if (save.checkIfAlreadySaved()) {
+                    overwrite(save);
+                } else {
+                    save.save();
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
+    }
+
+    private void overwrite(GameSave save) {
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Save already exists!");
         alert.setHeaderText("Do you want to overwrite your save?");
@@ -79,9 +105,7 @@ public class Main extends Application {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
-            GameSave save = new GameSave(player.getName(), 1, player.getHealth(), player.getInventoryAsStringList(),
-                    "1", player.getX(), player.getY());
-            save.export();
+            save.overwrite();
         } else {
             // ... user chose CANCEL or closed the dialog
         }
@@ -110,9 +134,9 @@ public class Main extends Application {
                 break;
             case S:
                 saveGame();
-
-                refresh();
+                break;
         }
+        refresh();
     }
 
 
@@ -161,11 +185,11 @@ public class Main extends Application {
                 doorCheck(direction)) {
             map.getPlayer().move(direction[0], direction[1]);
             if (map.getCell(currentX + direction[0], currentY + direction[1]).getTileName().equals("entrance")) {
-                this.player = map.getPlayer();
                 map = MapLoader.loadMap("/2.txt");
                 map.getPlayer().setInventory(this.player.getInventory());
                 map.getPlayer().updateDamage();
                 map.getPlayer().setHealth(player.getHealth());
+                this.player = map.getPlayer();
             }
         } else if (map.getCell(currentX + direction[0], currentY + direction[1]).getActor() != null) {
             map.getCell(currentX + direction[0],currentY + direction[1]).getActor().subtractHealth(map.getPlayer().getDamage());

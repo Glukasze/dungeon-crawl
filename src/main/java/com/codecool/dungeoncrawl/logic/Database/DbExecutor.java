@@ -30,6 +30,16 @@ public class DbExecutor {
         }
     }
 
+    public boolean checkStringInColumn(String query, String key, String column) throws SQLException {
+        ResultSet resultSet = DbExecutor.select(query);
+        while (resultSet.next()) {
+            if (resultSet.getString(column).equals(key)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void getFromTable(String query) throws SQLException {
 
         ResultSet resultSet = DbExecutor.select(query);
