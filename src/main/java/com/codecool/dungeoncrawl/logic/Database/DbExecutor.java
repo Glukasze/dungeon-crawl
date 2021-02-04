@@ -34,7 +34,7 @@ public class DbExecutor {
 
         ResultSet resultSet = DbExecutor.select(query);
         resultSet.next();
-        System.out.println(resultSet.getString("text"));
+        System.out.println(resultSet.getString("*"));
     }
 
 }

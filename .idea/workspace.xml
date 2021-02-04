@@ -4,9 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b934686-0015-4b0f-8645-dc8fc6a1e972" name="Default Changelist" comment="Implementing DB connection via JDBC&#10;&#10;-connection to the localhost Postgres DB is established">
+    <list default="true" id="5b934686-0015-4b0f-8645-dc8fc6a1e972" name="Default Changelist" comment="git maintenance">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/Database/DbConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/Database/DbConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/Database/DbExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/Database/DbExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/GameSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/GameSave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/actors/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/actors/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/Database/DbConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/Database/DbConnector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/Database/DbExecutor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/Database/DbExecutor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/GameSave.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/GameSave.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/actors/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/actors/Player.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="JDBC_connection" />
+        <entry key="$PROJECT_DIR$" value="development" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,6 +61,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="RunConfigurationTargetLRU" value="8a85abfa-2a35-4b0c-ae99-a9310239f021" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -75,7 +86,7 @@
       <command value="mvn --debug" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ActorTest">
+  <component name="RunManager" selected="Database Script.sample_schema_ddl">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.codecool.dungeoncrawl.Main" />
       <module name="dungeon-crawl" />
@@ -101,6 +112,12 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="sample_schema_ddl" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/sample_data/sample_schema_ddl" />
+      <script-mode>FILE</script-mode>
+      <data-source id="8a85abfa-2a35-4b0c-ae99-a9310239f021" />
+      <method v="2" />
     </configuration>
     <configuration name="ActorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="dungeon-crawl" />
@@ -194,14 +211,15 @@
       <item itemvalue="JUnit.All in dungeon-crawl" />
       <item itemvalue="JUnit.CellTest" />
       <item itemvalue="Maven.dungeon-crawl-Maven-run" />
+      <item itemvalue="Database Script.sample_schema_ddl" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Database Script.sample_schema_ddl" />
         <item itemvalue="JUnit.ActorTest" />
         <item itemvalue="JUnit.CellTest" />
         <item itemvalue="JUnit.All in dungeon-crawl" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.All in dungeon-crawl" />
       </list>
     </recent_temporary>
   </component>
@@ -308,7 +326,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612292901360</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="git maintenance">
+      <created>1612382314802</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1612382314802</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,6 +364,7 @@
     <MESSAGE value="minor changes" />
     <MESSAGE value="Implementing DB connection via JDBC&#10;&#10;-connection is established" />
     <MESSAGE value="Implementing DB connection via JDBC&#10;&#10;-connection to the localhost Postgres DB is established" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementing DB connection via JDBC&#10;&#10;-connection to the localhost Postgres DB is established" />
+    <MESSAGE value="git maintenance" />
+    <option name="LAST_COMMIT_MESSAGE" value="git maintenance" />
   </component>
 </project>
