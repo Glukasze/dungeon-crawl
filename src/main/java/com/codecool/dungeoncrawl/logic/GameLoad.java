@@ -41,13 +41,6 @@ public class GameLoad {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        System.out.println(playerHealth);
-        System.out.println(playerInventory);
-        System.out.println(playerName);
-        System.out.println(currentMap);
-        System.out.println(playerX);
-        System.out.println(playerY);
-        System.out.println(savedAt);
     }
 
     public int hetHealth() {

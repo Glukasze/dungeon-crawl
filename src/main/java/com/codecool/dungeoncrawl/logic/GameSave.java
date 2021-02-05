@@ -64,8 +64,6 @@ public class GameSave {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-        System.out.println("SAVED");
     }
 
     public void overwrite() {
@@ -104,7 +102,6 @@ public class GameSave {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        System.out.println("OVERWRITTEN");
     }
 
     public boolean checkIfAlreadySaved() throws SQLException {
