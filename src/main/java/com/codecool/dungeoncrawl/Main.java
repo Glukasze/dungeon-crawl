@@ -36,6 +36,7 @@ public class Main extends Application {
     int currentX = map.getPlayer().getX();
     int currentY = map.getPlayer().getY();
     private Player player = map.getPlayer();
+    private String currentMap = "1.txt";
 
     public Main() {
     }
@@ -73,7 +74,7 @@ public class Main extends Application {
     private void saveGame() {
 
         GameSave save = new GameSave(player.getName(), 1, player.getHealth(), player.getInventoryAsStringList(),
-                "1", player.getX(), player.getY());
+                currentMap, player.getX(), player.getY());
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Saving");
@@ -186,6 +187,7 @@ public class Main extends Application {
             map.getPlayer().move(direction[0], direction[1]);
             if (map.getCell(currentX + direction[0], currentY + direction[1]).getTileName().equals("entrance")) {
                 map = MapLoader.loadMap("/2.txt");
+                this.currentMap = "2.txt";
                 map.getPlayer().setInventory(this.player.getInventory());
                 map.getPlayer().updateDamage();
                 map.getPlayer().setHealth(player.getHealth());
