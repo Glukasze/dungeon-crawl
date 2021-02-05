@@ -7,7 +7,6 @@ public class DbConnector {
     private static String URL = "jdbc:postgresql://localhost/dungeon-crawl";
     private static String username = "postgres";
     private static String password = "Codecool";
-    String query = "SELECT * FROM sample";
 
     public static Connection connect() {
 

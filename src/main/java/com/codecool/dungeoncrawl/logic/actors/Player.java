@@ -8,9 +8,14 @@ import java.util.ArrayList;
 public class Player extends Actor {
 
     private ArrayList<Item> inventory = new ArrayList<Item>();
+    private String name = "Rozan";
 
     public Player(Cell cell) {
         super(cell);
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public void setInventory(ArrayList<Item> inventory) {
@@ -49,6 +54,18 @@ public class Player extends Actor {
         for (Item item : inventory) {
             result += (item.getTileName() + "\n");
         }
+        return result;
+    }
+
+    public ArrayList<String> getInventoryAsStringList() {
+        ArrayList<String> result = new ArrayList<>();
+        for (Item item : inventory) {
+            result.add(item.getTileName());
+        }
+        if (result.size() < 1) {
+            result.add("empty");
+        }
+        System.out.println(result);
         return result;
     }
 
