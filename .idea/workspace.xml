@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b934686-0015-4b0f-8645-dc8fc6a1e972" name="Default Changelist" comment="implementing saving the game&#10;&#10;-saving now stores all required data in both tables">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/GameLoad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="5b934686-0015-4b0f-8645-dc8fc6a1e972" name="Default Changelist" comment="implementing saving the game&#10;&#10;-saving now stores all required data in both tables" />
+    <list id="78541e57-b677-4556-a559-1581bd97942b" name="Revert: " comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,7 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="development" />
+        <entry key="$PROJECT_DIR$" value="game_load" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -86,17 +84,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -378,6 +365,19 @@
     <MESSAGE value="implementing saving the game&#10;&#10;-Modal pop-up created to save the game" />
     <MESSAGE value="implementing saving the game&#10;&#10;-saves can be written and overwritten" />
     <MESSAGE value="implementing saving the game&#10;&#10;-saving now stores all required data in both tables" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementing saving the game&#10;&#10;-saving now stores all required data in both tables" />
+    <MESSAGE value="implementing loading the game&#10;&#10;-pop-up modal boxes for loading implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementing loading the game&#10;&#10;-pop-up modal boxes for loading implemented" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/GameSave.java</url>
+          <line>19</line>
+          <properties field="currentMap" class="com.codecool.dungeoncrawl.logic.GameSave" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
