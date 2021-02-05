@@ -14,7 +14,6 @@ public class DbConnector {
 
         try {
             conn = DriverManager.getConnection(URL, username, password);
-            System.out.println("DB active!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
