@@ -3,6 +3,9 @@ package com.codecool.dungeoncrawl;
 import com.codecool.dungeoncrawl.logic.*;
 import com.codecool.dungeoncrawl.logic.actors.Bug;
 import com.codecool.dungeoncrawl.logic.actors.Player;
+import com.codecool.dungeoncrawl.logic.items.Item;
+import com.codecool.dungeoncrawl.logic.items.Key;
+import com.codecool.dungeoncrawl.logic.items.Sword;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -17,6 +20,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.sql.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -36,7 +40,7 @@ public class Main extends Application {
     int currentX = map.getPlayer().getX();
     int currentY = map.getPlayer().getY();
     private Player player = map.getPlayer();
-    private String currentMap = "1.txt";
+    private String currentMap = "/1.txt";
 
     public Main() {
     }
@@ -112,6 +116,27 @@ public class Main extends Application {
         }
     }
 
+    private ArrayList<Item> setupInventory(ArrayList<String> loadedInventory) {
+        ArrayList<Item> result = new ArrayList<>();
+        for (String loadedItem : loadedInventory) {
+            if (loadedItem.equals("key")) {
+                Item item = new Key(player.getCell());
+                result.add(item);
+            } else if (loadedItem.equals("sword")) {
+                Item item = new Sword(player.getCell());
+                result.add(item);
+            }
+        }
+        return result;
+    }
+
+    private void loadGame() {
+        GameLoad load = new GameLoad(player.getName());
+        this.player.setInventory(setupInventory(load.getInventory()));
+        newLevel(load.getMap(), this.player.getInventory(), load.hetHealth());
+
+    }
+
     private void onKeyPressed(KeyEvent keyEvent) {
 
         switch (keyEvent.getCode()) {
@@ -136,6 +161,10 @@ public class Main extends Application {
             case S:
                 saveGame();
                 break;
+            case L:
+                loadGame();;
+                break;
+
         }
         refresh();
     }
@@ -179,6 +208,15 @@ public class Main extends Application {
         return true;
     }
 
+    private void newLevel(String mapName, ArrayList<Item> inventory, int health) {
+        map = MapLoader.loadMap(mapName);
+        this.currentMap = mapName;
+        map.getPlayer().setInventory(inventory);
+        map.getPlayer().updateDamage();
+        map.getPlayer().setHealth(health);
+        this.player = map.getPlayer();
+    }
+
     private void playerMove(int[] direction) {
 
         if (!map.getCell(currentX + direction[0], currentY + direction[1]).getTileName().equals("wall") &&
@@ -186,12 +224,7 @@ public class Main extends Application {
                 doorCheck(direction)) {
             map.getPlayer().move(direction[0], direction[1]);
             if (map.getCell(currentX + direction[0], currentY + direction[1]).getTileName().equals("entrance")) {
-                map = MapLoader.loadMap("/2.txt");
-                this.currentMap = "2.txt";
-                map.getPlayer().setInventory(this.player.getInventory());
-                map.getPlayer().updateDamage();
-                map.getPlayer().setHealth(player.getHealth());
-                this.player = map.getPlayer();
+                newLevel("/2.txt", this.player.getInventory(), player.getHealth());
             }
         } else if (map.getCell(currentX + direction[0], currentY + direction[1]).getActor() != null) {
             map.getCell(currentX + direction[0],currentY + direction[1]).getActor().subtractHealth(map.getPlayer().getDamage());
