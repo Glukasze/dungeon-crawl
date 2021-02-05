@@ -19,8 +19,11 @@ public class GameLoad {
 
     DbExecutor executor = new DbExecutor();
 
-
     public GameLoad(String playerName) {
+        this.playerName = playerName;
+    }
+
+    public GameLoad(String playerName, int start) {
 
         this.playerName = playerName;
         try {
@@ -65,6 +68,10 @@ public class GameLoad {
 
     public int getY() {
         return this.playerY;
+    }
+
+    public boolean checkIfAlreadySaved() throws SQLException {
+        return executor.checkStringInColumn("SELECT * FROM player", playerName, "player_name");
     }
 
 }

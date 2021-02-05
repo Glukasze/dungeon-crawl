@@ -82,8 +82,8 @@ public class Main extends Application {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Saving");
-        alert.setHeaderText(null);
-        alert.setContentText("press OK to save");
+        alert.setHeaderText("Do you want to save game?");
+        alert.setContentText(null);
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
@@ -106,7 +106,7 @@ public class Main extends Application {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Save already exists!");
         alert.setHeaderText("Do you want to overwrite your save?");
-        alert.setContentText("press OK to overwrite");
+        alert.setContentText(null);
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
@@ -130,11 +130,38 @@ public class Main extends Application {
         return result;
     }
 
-    private void loadGame() {
-        GameLoad load = new GameLoad(player.getName());
-        this.player.setInventory(setupInventory(load.getInventory()));
-        newLevel(load.getMap(), this.player.getInventory(), load.hetHealth());
+    private void noSave() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Nothing to load!");
+        alert.setHeaderText("Save file missing");
+        alert.setContentText(null);
+        alert.showAndWait();
+    }
 
+    private void loadGame() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Load saved game");
+        alert.setHeaderText("Do you want to load saved game?");
+        alert.setContentText(null);
+
+        GameLoad preLoad = new GameLoad(player.getName());
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            try {
+                if (preLoad.checkIfAlreadySaved()) {
+                    GameLoad load = new GameLoad(player.getName(), 1);
+                    this.player.setInventory(setupInventory(load.getInventory()));
+                    newLevel(load.getMap(), this.player.getInventory(), load.hetHealth());
+                } else {
+                    noSave();
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
     }
 
     private void onKeyPressed(KeyEvent keyEvent) {
