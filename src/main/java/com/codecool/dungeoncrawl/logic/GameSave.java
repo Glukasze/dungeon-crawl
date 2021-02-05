@@ -16,7 +16,7 @@ public class GameSave {
     private String playerName;
     private int playerID;
     private int playerHealth;
-    private ArrayList<String> playerInvewntory = new ArrayList<>();
+    private ArrayList<String> playerInventory = new ArrayList<>();
     private String currentMap;
     private int playerX;
     private int playerY;
@@ -30,7 +30,7 @@ public class GameSave {
         this.playerName = playerName;
         this.playerID = playerID;
         this.playerHealth = playerHealth;
-        this.playerInvewntory = playerInventory;
+        this.playerInventory = playerInventory;
         this.currentMap = currentMap;
         this.playerX = playerX;
         this.playerY = playerY;
@@ -38,13 +38,23 @@ public class GameSave {
     }
 
     public void save() {
+        PreparedStatement st = null;
         DbExecutor.execute("INSERT INTO player(player_name, hp, x, y)" +
                 "VALUES('"+playerName+"', "+playerHealth+", "+playerX+", "+playerY+")");
 
-        PreparedStatement st = null;
+        for (String item : playerInventory) {
+            try {
+                st = DbConnector.connect().prepareStatement("INSERT INTO " +
+                        "inventory (item, player_id) VALUES (?,?)");
+                st.setObject(1, item);
+                st.setObject(2, playerID);
+                st.executeUpdate(); st.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+
         try {
-            int playerID = executor.getIntByColumn("SELECT id FROM player WHERE player_name = '"+playerName+"'",
-                    "id");
             st = DbConnector.connect().prepareStatement("INSERT INTO " +
                     "game_state (current_map, saved_at, player_id) VALUES (?,?,?)");
             st.setObject(1, currentMap);
@@ -60,18 +70,36 @@ public class GameSave {
 
     public void overwrite() {
 
-        DbExecutor.execute("UPDATE player SET hp = "+playerHealth+", x = "+playerX+", y = "+playerY+" " +
+        DbExecutor.execute("UPDATE player SET hp = "+playerHealth+"," +
+                " x = "+playerX+", y = "+playerY+" " +
                 "WHERE player_name = '"+playerName+"'");
 
         PreparedStatement st = null;
+
         try {
-            int localPlayerID = executor.getIntByColumn("SELECT id FROM player WHERE player_name = '"+playerName+"'",
-                    "id");
+            st = DbConnector.connect().prepareStatement("DELETE FROM " +
+                    "inventory WHERE player_id = ?");
+            st.setObject(1, playerID);
+            st.executeUpdate(); st.close();
+
+            for (String item : playerInventory) {
+                st = DbConnector.connect().prepareStatement("INSERT INTO " +
+                        "inventory (item, player_id) VALUES (?,?)");
+                st.setObject(1, item);
+                st.setObject(2, playerID);
+                st.executeUpdate();
+                st.close();
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        try {
             st = DbConnector.connect().prepareStatement("UPDATE game_state SET " +
                     "current_map = ?, saved_at = ? WHERE player_id = ?");
             st.setObject(1, currentMap);
             st.setObject(2, savedAt);
-            st.setObject(3, localPlayerID);
+            st.setObject(3, playerID);
             st.executeUpdate(); st.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

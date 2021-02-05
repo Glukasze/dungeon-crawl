@@ -3,6 +3,9 @@ package com.codecool.dungeoncrawl;
 import com.codecool.dungeoncrawl.logic.*;
 import com.codecool.dungeoncrawl.logic.actors.Bug;
 import com.codecool.dungeoncrawl.logic.actors.Player;
+import com.codecool.dungeoncrawl.logic.items.Item;
+import com.codecool.dungeoncrawl.logic.items.Key;
+import com.codecool.dungeoncrawl.logic.items.Sword;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -17,6 +20,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.sql.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -36,7 +40,7 @@ public class Main extends Application {
     int currentX = map.getPlayer().getX();
     int currentY = map.getPlayer().getY();
     private Player player = map.getPlayer();
-    private String currentMap = "1.txt";
+    private String currentMap = "/1.txt";
 
     public Main() {
     }
@@ -78,8 +82,8 @@ public class Main extends Application {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Saving");
-        alert.setHeaderText(null);
-        alert.setContentText("press OK to save");
+        alert.setHeaderText("Do you want to save game?");
+        alert.setContentText(null);
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
@@ -102,11 +106,59 @@ public class Main extends Application {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Save already exists!");
         alert.setHeaderText("Do you want to overwrite your save?");
-        alert.setContentText("press OK to overwrite");
+        alert.setContentText(null);
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             save.overwrite();
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
+    }
+
+    private ArrayList<Item> setupInventory(ArrayList<String> loadedInventory) {
+        ArrayList<Item> result = new ArrayList<>();
+        for (String loadedItem : loadedInventory) {
+            if (loadedItem.equals("key")) {
+                Item item = new Key(player.getCell());
+                result.add(item);
+            } else if (loadedItem.equals("sword")) {
+                Item item = new Sword(player.getCell());
+                result.add(item);
+            }
+        }
+        return result;
+    }
+
+    private void noSave() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Nothing to load!");
+        alert.setHeaderText("Save file missing");
+        alert.setContentText(null);
+        alert.showAndWait();
+    }
+
+    private void loadGame() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Load saved game");
+        alert.setHeaderText("Do you want to load saved game?");
+        alert.setContentText(null);
+
+        GameLoad preLoad = new GameLoad(player.getName());
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            try {
+                if (preLoad.checkIfAlreadySaved()) {
+                    GameLoad load = new GameLoad(player.getName(), 1);
+                    this.player.setInventory(setupInventory(load.getInventory()));
+                    newLevel(load.getMap(), this.player.getInventory(), load.hetHealth());
+                } else {
+                    noSave();
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         } else {
             // ... user chose CANCEL or closed the dialog
         }
@@ -136,6 +188,10 @@ public class Main extends Application {
             case S:
                 saveGame();
                 break;
+            case L:
+                loadGame();;
+                break;
+
         }
         refresh();
     }
@@ -179,6 +235,15 @@ public class Main extends Application {
         return true;
     }
 
+    private void newLevel(String mapName, ArrayList<Item> inventory, int health) {
+        map = MapLoader.loadMap(mapName);
+        this.currentMap = mapName;
+        map.getPlayer().setInventory(inventory);
+        map.getPlayer().updateDamage();
+        map.getPlayer().setHealth(health);
+        this.player = map.getPlayer();
+    }
+
     private void playerMove(int[] direction) {
 
         if (!map.getCell(currentX + direction[0], currentY + direction[1]).getTileName().equals("wall") &&
@@ -186,12 +251,7 @@ public class Main extends Application {
                 doorCheck(direction)) {
             map.getPlayer().move(direction[0], direction[1]);
             if (map.getCell(currentX + direction[0], currentY + direction[1]).getTileName().equals("entrance")) {
-                map = MapLoader.loadMap("/2.txt");
-                this.currentMap = "2.txt";
-                map.getPlayer().setInventory(this.player.getInventory());
-                map.getPlayer().updateDamage();
-                map.getPlayer().setHealth(player.getHealth());
-                this.player = map.getPlayer();
+                newLevel("/2.txt", this.player.getInventory(), player.getHealth());
             }
         } else if (map.getCell(currentX + direction[0], currentY + direction[1]).getActor() != null) {
             map.getCell(currentX + direction[0],currentY + direction[1]).getActor().subtractHealth(map.getPlayer().getDamage());
