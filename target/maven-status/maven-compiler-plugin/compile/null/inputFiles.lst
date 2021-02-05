@@ -1,3 +1,4 @@
+/Users/gracjan/Desktop/Code/Projects/JAVA/dungeon-crawl/src/main/java/com/codecool/dungeoncrawl/logic/GameSave.java
 /Users/gracjan/Desktop/Code/Projects/JAVA/dungeon-crawl/src/main/java/com/codecool/dungeoncrawl/logic/actors/Troll.java
 /Users/gracjan/Desktop/Code/Projects/JAVA/dungeon-crawl/src/main/java/com/codecool/dungeoncrawl/logic/Drawable.java
 /Users/gracjan/Desktop/Code/Projects/JAVA/dungeon-crawl/src/main/java/com/codecool/dungeoncrawl/logic/CellType.java
@@ -6,6 +7,7 @@
 /Users/gracjan/Desktop/Code/Projects/JAVA/dungeon-crawl/src/main/java/com/codecool/dungeoncrawl/logic/actors/Actor.java
 /Users/gracjan/Desktop/Code/Projects/JAVA/dungeon-crawl/src/main/java/com/codecool/dungeoncrawl/logic/Database/DbConnector.java
 /Users/gracjan/Desktop/Code/Projects/JAVA/dungeon-crawl/src/main/java/com/codecool/dungeoncrawl/logic/actors/Bug.java
+/Users/gracjan/Desktop/Code/Projects/JAVA/dungeon-crawl/src/main/java/com/codecool/dungeoncrawl/logic/Database/DbExecutor.java
 /Users/gracjan/Desktop/Code/Projects/JAVA/dungeon-crawl/src/main/java/com/codecool/dungeoncrawl/logic/MapLoader.java
 /Users/gracjan/Desktop/Code/Projects/JAVA/dungeon-crawl/src/main/java/com/codecool/dungeoncrawl/logic/actors/Skeleton.java
 /Users/gracjan/Desktop/Code/Projects/JAVA/dungeon-crawl/src/main/java/com/codecool/dungeoncrawl/logic/Cell.java

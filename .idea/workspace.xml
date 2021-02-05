@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b934686-0015-4b0f-8645-dc8fc6a1e972" name="Default Changelist" comment="Implementing DB connection via JDBC&#10;&#10;-connection to the localhost Postgres DB is established">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main.class" afterDir="false" />
+    <list default="true" id="5b934686-0015-4b0f-8645-dc8fc6a1e972" name="Default Changelist" comment="implementing saving the game&#10;&#10;-saving now stores all required data in both tables">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/GameLoad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="JDBC_connection" />
+        <entry key="$PROJECT_DIR$" value="development" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,6 +51,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="RunConfigurationTargetLRU" value="8a85abfa-2a35-4b0c-ae99-a9310239f021" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -75,7 +76,7 @@
       <command value="mvn --debug" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ActorTest">
+  <component name="RunManager" selected="Database Script.sample_schema_ddl">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.codecool.dungeoncrawl.Main" />
       <module name="dungeon-crawl" />
@@ -89,18 +90,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="sample_schema_ddl" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/sample_data/sample_schema_ddl" />
+      <script-mode>FILE</script-mode>
+      <data-source id="8a85abfa-2a35-4b0c-ae99-a9310239f021" />
+      <method v="2" />
     </configuration>
     <configuration name="ActorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="dungeon-crawl" />
@@ -190,6 +195,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
+      <item itemvalue="Database Script.sample_schema_ddl" />
       <item itemvalue="JUnit.ActorTest" />
       <item itemvalue="JUnit.All in dungeon-crawl" />
       <item itemvalue="JUnit.CellTest" />
@@ -197,11 +203,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Database Script.sample_schema_ddl" />
         <item itemvalue="JUnit.ActorTest" />
         <item itemvalue="JUnit.CellTest" />
         <item itemvalue="JUnit.All in dungeon-crawl" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.All in dungeon-crawl" />
       </list>
     </recent_temporary>
   </component>
@@ -223,6 +229,7 @@
       <workItem from="1612005649902" duration="150000" />
       <workItem from="1612186678123" duration="2944000" />
       <workItem from="1612379015771" duration="958000" />
+      <workItem from="1612525517501" duration="681000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1610486338764</created>
@@ -308,7 +315,35 @@
       <option name="project" value="LOCAL" />
       <updated>1612292901360</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="git maintenance">
+      <created>1612382314802</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1612382314802</updated>
+    </task>
+    <task id="LOCAL-00014" summary="implementing saving the game&#10;&#10;-Modal pop-up created to save the game">
+      <created>1612470606834</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1612470606834</updated>
+    </task>
+    <task id="LOCAL-00015" summary="implementing saving the game&#10;&#10;-saves can be written and overwritten">
+      <created>1612476952663</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1612476952663</updated>
+    </task>
+    <task id="LOCAL-00016" summary="implementing saving the game&#10;&#10;-saving now stores all required data in both tables">
+      <created>1612483922263</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1612483922263</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,6 +374,10 @@
     <MESSAGE value="minor changes" />
     <MESSAGE value="Implementing DB connection via JDBC&#10;&#10;-connection is established" />
     <MESSAGE value="Implementing DB connection via JDBC&#10;&#10;-connection to the localhost Postgres DB is established" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementing DB connection via JDBC&#10;&#10;-connection to the localhost Postgres DB is established" />
+    <MESSAGE value="git maintenance" />
+    <MESSAGE value="implementing saving the game&#10;&#10;-Modal pop-up created to save the game" />
+    <MESSAGE value="implementing saving the game&#10;&#10;-saves can be written and overwritten" />
+    <MESSAGE value="implementing saving the game&#10;&#10;-saving now stores all required data in both tables" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementing saving the game&#10;&#10;-saving now stores all required data in both tables" />
   </component>
 </project>

@@ -30,11 +30,20 @@ public class DbExecutor {
         }
     }
 
-    public static void getFromTable(String query) throws SQLException {
+    public boolean checkStringInColumn(String query, String key, String column) throws SQLException {
+        ResultSet resultSet = select(query);
+        while (resultSet.next()) {
+            if (resultSet.getString(column).equals(key)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-        ResultSet resultSet = DbExecutor.select(query);
+    public int getIntByColumn(String query, String column) throws SQLException {
+        ResultSet resultSet = select(query);
         resultSet.next();
-        System.out.println(resultSet.getString("text"));
+        return resultSet.getInt(column);
     }
 
 }

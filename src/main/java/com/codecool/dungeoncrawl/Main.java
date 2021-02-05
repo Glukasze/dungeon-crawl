@@ -1,10 +1,6 @@
 package com.codecool.dungeoncrawl;
 
-import com.codecool.dungeoncrawl.logic.Cell;
-import com.codecool.dungeoncrawl.logic.CellType;
-import com.codecool.dungeoncrawl.logic.Database.DbExecutor;
-import com.codecool.dungeoncrawl.logic.GameMap;
-import com.codecool.dungeoncrawl.logic.MapLoader;
+import com.codecool.dungeoncrawl.logic.*;
 import com.codecool.dungeoncrawl.logic.actors.Bug;
 import com.codecool.dungeoncrawl.logic.actors.Player;
 import javafx.application.Application;
@@ -12,6 +8,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -21,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Random;
 
 public class Main extends Application {
@@ -36,7 +35,8 @@ public class Main extends Application {
 
     int currentX = map.getPlayer().getX();
     int currentY = map.getPlayer().getY();
-    private Player player;
+    private Player player = map.getPlayer();
+    private String currentMap = "1.txt";
 
     public Main() {
     }
@@ -48,8 +48,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-        DbExecutor.getFromTable("SELECT * FROM sample");
 
         GridPane ui = new GridPane();
         ui.setPrefWidth(200);
@@ -73,6 +71,47 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    private void saveGame() {
+
+        GameSave save = new GameSave(player.getName(), 1, player.getHealth(), player.getInventoryAsStringList(),
+                currentMap, player.getX(), player.getY());
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Saving");
+        alert.setHeaderText(null);
+        alert.setContentText("press OK to save");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            try {
+                if (save.checkIfAlreadySaved()) {
+                    overwrite(save);
+                } else {
+                    save.save();
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
+    }
+
+    private void overwrite(GameSave save) {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Save already exists!");
+        alert.setHeaderText("Do you want to overwrite your save?");
+        alert.setContentText("press OK to overwrite");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            save.overwrite();
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
+    }
+
     private void onKeyPressed(KeyEvent keyEvent) {
 
         switch (keyEvent.getCode()) {
@@ -93,14 +132,19 @@ public class Main extends Application {
                     map.getPlayer().addToInventory(map.getCell(currentX,currentY).getItem());
                     map.getCell(currentX, currentY).setItem(null);
                 }
-                refresh();
+                break;
+            case S:
+                saveGame();
+                break;
         }
+        refresh();
     }
 
 
     private void refresh() {
         this.currentX = map.getPlayer().getX();
         this.currentY = map.getPlayer().getY();
+
 
         bugMove(generateDirection(randomDirection()), map.getBugs());
         context.setFill(Color.BLACK);
@@ -142,11 +186,12 @@ public class Main extends Application {
                 doorCheck(direction)) {
             map.getPlayer().move(direction[0], direction[1]);
             if (map.getCell(currentX + direction[0], currentY + direction[1]).getTileName().equals("entrance")) {
-                this.player = map.getPlayer();
                 map = MapLoader.loadMap("/2.txt");
+                this.currentMap = "2.txt";
                 map.getPlayer().setInventory(this.player.getInventory());
                 map.getPlayer().updateDamage();
                 map.getPlayer().setHealth(player.getHealth());
+                this.player = map.getPlayer();
             }
         } else if (map.getCell(currentX + direction[0], currentY + direction[1]).getActor() != null) {
             map.getCell(currentX + direction[0],currentY + direction[1]).getActor().subtractHealth(map.getPlayer().getDamage());
