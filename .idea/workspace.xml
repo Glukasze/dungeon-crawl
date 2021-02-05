@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b934686-0015-4b0f-8645-dc8fc6a1e972" name="Default Changelist" comment="implementing loading the game&#10;&#10;-load game implemented">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/GameLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/GameLoad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/GameSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/GameSave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/GameLoad.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/GameLoad.class" afterDir="false" />
+    <list default="true" id="5b934686-0015-4b0f-8645-dc8fc6a1e972" name="Default Changelist" comment="Cleaning&#10;&#10;-cleaned DDD">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/GameSave.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/codecool/dungeoncrawl/logic/GameSave.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -363,7 +363,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612559370092</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Cleaning&#10;&#10;-cleaned DDD">
+      <created>1612567066415</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1612567066415</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -399,6 +406,7 @@
     <MESSAGE value="implementing saving the game&#10;&#10;-saves can be written and overwritten" />
     <MESSAGE value="implementing saving the game&#10;&#10;-saving now stores all required data in both tables" />
     <MESSAGE value="implementing loading the game&#10;&#10;-load game implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementing loading the game&#10;&#10;-load game implemented" />
+    <MESSAGE value="Cleaning&#10;&#10;-cleaned DDD" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaning&#10;&#10;-cleaned DDD" />
   </component>
 </project>
